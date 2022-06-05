@@ -1,12 +1,17 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Products from './Products';
+import {connect} from 'react-redux';
 
 function ProductHolder() {
 
     const [isLoaded,setLoaded] = useState(false);
     const [response,setResponse] = useState([]);
+
+  
     console.log(response,'aa    ')
+
+    //using axios to get the data 
     useEffect(()=>{
         axios.get('https://secret-reaches-16493.herokuapp.com/login').then(function (response) {
     
@@ -17,6 +22,7 @@ function ProductHolder() {
           })
     },[isLoaded])
     
+
   return (
     <div class='flex gap-6 flex-wrap ml-20 mt-10'>
       {isLoaded ? response.data.map((res)=>{

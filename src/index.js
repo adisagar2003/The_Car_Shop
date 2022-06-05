@@ -10,7 +10,7 @@ import cartReducer from './Component/reducer/reducer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const store = createStore(cartReducer)
-console.log(store.getState(),'ourPLACE MAN')
+
 root.render(
     <Provider store={store}>
     <App />

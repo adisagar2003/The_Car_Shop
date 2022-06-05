@@ -7,7 +7,7 @@ function Products({key,name,price,src}) {
     return {
       type: 'item/added',
       payload:{
-        "id":key,
+        "id":Math.floor(Math.random()*1000),
         "name":name,
         "price":price,
         "src":src
@@ -20,6 +20,7 @@ function Products({key,name,price,src}) {
       
 
     store.dispatch(pushItem())
+    console.log('dispatched')
     
         
       
