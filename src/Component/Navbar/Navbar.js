@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import {connect} from 'react-redux';
 import store from '../Products/Store';
+import { Link } from 'react-router-dom';
 function Navbar({cart}) {
 
 const [data,setData] = useState({})
@@ -11,17 +12,17 @@ const [data,setData] = useState({})
   
    useEffect(()=>{
      let count =0
-     console.log('I re-rendered')
+     
     setData(cart.getState())
     setInterval(()=>{
       setToggle(!toggle)
-    },1000)
+    },3000)
     
   
 
    },[toggle])
 
-   console.log(data,'actua Data')
+  
 
 
 
@@ -34,7 +35,7 @@ const [data,setData] = useState({})
     
       <div class="navbar bg-base-100">
   <div class="flex-1">
-    <a class="btn btn-ghost normal-case text-xl"><span class='text-green-500'>The Car</span> Shop</a>
+  <Link to='/'>   <a class="btn btn-ghost normal-case text-xl"><span class='text-green-500'> The Car</span> Shop</a></Link>
   </div>
   <div class="flex-none">
     <div class="dropdown dropdown-end">
@@ -47,10 +48,10 @@ const [data,setData] = useState({})
       </label>
       <div tabindex="0" class="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow">
         <div class="card-body">
-          <span class="font-bold text-lg" >{store.getState().cart.length} Items</span>
-          <span class="text-info">Subtotal: {store.getState().cart[0].price}</span>
+          <span class="font-bold text-lg" >{store.getState().cart.length ? store.getState().cart.length:0 } Items</span>
+          <span class="text-info"></span>
           <div class="card-actions">
-            <button class="btn btn-primary btn-block" onClick={console.log(cart,'huh')}>View cart</button>
+            <button class="btn btn-primary btn-block" onClick={console.log(cart,'huh')}><Link to='/cart'>View cart</Link></button>
           </div>
         </div>
       </div>
